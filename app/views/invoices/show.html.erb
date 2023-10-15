@@ -1,3 +1,11 @@
 <h1><%= @invoice.title %></h1>
 
 <p>This is some text</p>
+
+<ul>
+    <li><%= link_to "Edit", edit_invoice_path(@invoice) %></li>
+    <li><%= link_to "Destory", invoice_path(@invoice), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+        }%></li>
+</ul>
