@@ -3,9 +3,7 @@
 <ul>
     <% @invoices.each do |invoice| %>
         <li>
-            <a href="/invoices/<%= invoice.id %>">
-                <%= invoice.title %>
-            </a>
+            <%= link_to invoice.title, invoice %>
         </li>
     <% end %>
 </ul>
