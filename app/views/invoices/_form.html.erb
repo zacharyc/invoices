@@ -1,0 +1,13 @@
+<%= form_with model: invoice do |form| %>
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+        <% invoice.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

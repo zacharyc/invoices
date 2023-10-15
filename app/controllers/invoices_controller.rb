@@ -21,6 +21,20 @@ class InvoicesController < ApplicationController
     end
   end
   
+  def edit
+    @invoice = Invoice.find(params[:id])
+  end
+  
+  def update
+    @invoice = Invoice.find(params[:id])
+    
+    if @invoice.update(invoice_params)
+      redirect_to @invoice
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  
   private
   def invoice_params
     params.require(:invoice).permit(:title)
