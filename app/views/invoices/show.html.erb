@@ -8,4 +8,54 @@
             turbo_method: :delete,
             turbo_confirm: "Are you sure?"
         }%></li>
+
+    <h2>Items</h2>
+    <table>
+        <tbody>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+
+    <% @invoice.items.each do |item| %>
+        <tr>
+            <td><%= item.title %></td>
+            <td><%= item.description %></td>
+            <td><%= item.price %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.price * item.quantity %></td>
+        </tr>
+    <% end %>
+        </tbody>
+    </table>
+    
+    <h2>Add an Item</h2>
+    <%= form_with model: [@invoice, @invoice.items.build] do |form| %>
+        <p>
+            <%= form.label :title %><br />
+            <%= form.text_field :title%>
+        </p>
+        
+        <p>
+            <%= form.label :description %><br />
+            <%= form.text_area :description %>
+        </p>
+        
+        <p>
+            <%= form.label :price %><br />
+            <%= form.number_field :price %>
+        </p>
+        
+        <p>
+            <%= form.label :quantity %><br />
+            <%= form.number_field :quantity%>
+        </p>
+        
+        <p>
+            <%= form.submit%>
+        </p>
+    <% end %>
 </ul>
